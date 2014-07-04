@@ -147,7 +147,11 @@ EmbeddedSVGEdit.prototype.send = function (name, args, callback){
 		*   made compatile with all API functionality
 		*/
 		// We accept and post strings for the sake of IE9 support
-		if (window.location.origin === t.frame.contentWindow.location.origin) {
+		var frameOrigin;
+		try {
+			frameOrigin = t.frame.contentWindow.location.origin;
+		} catch (accessDenied) {}
+		if (window.location.origin === frameOrigin) {
 		  // Although we do not really need this API if we are working same
 		  //  domain, it could allow us to write in a way that would work
 		  //  cross-domain as well, assuming we stick to the argument limitations
