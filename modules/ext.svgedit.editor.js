@@ -53,17 +53,17 @@ mw.svgedit = {
 		var svgedit = null; // to be filled out when iframe is loaded
 		var saved = false;
 
-		var origWidth = parseInt(imageinfo.width, 10) || 640;
-		var origHeight = parseInt(imageinfo.height, 10) || 480;
+		var origWidth = Numer(imageinfo.width) || 640;
+		var origHeight = Numer(imageinfo.height) || 480;
 		if (origWidth && origHeight) {
 			// Initialize the canvas dimensions to the image's defined size...
 			url += '?dimensions=' + origWidth + ',' + origHeight;
 		}
 
-		var preferredHeight = origHeight + 180; // leave space for toolbars and UI inside the iframe
+		var preferredHeight = origHeight * 0.7 + 300; // leave space for toolbars and UI inside the iframe
 		var windowHeight = $(window).height() - 40; // leave space for our toolbar outside the iframe
 		var minHeight = Math.min(windowHeight, preferredHeight);
-		var initHeight = Math.max(minHeight, minHeight);
+		var initHeight = minHeight;
 
 		// @fixme
 		var orig = $(replace);
