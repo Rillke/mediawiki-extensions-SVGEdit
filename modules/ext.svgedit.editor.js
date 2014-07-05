@@ -60,7 +60,7 @@ mw.svgedit = {
 			url += '?dimensions=' + origWidth + ',' + origHeight;
 		}
 
-		var preferredHeight = origHeight * 0.7 + 300; // leave space for toolbars and UI inside the iframe
+		var preferredHeight = Math.max(origHeight * 0.7 + 300, 454); // leave space for toolbars and UI inside the iframe
 		var windowHeight = $(window).height() - 40; // leave space for our toolbar outside the iframe
 		var minHeight = Math.min(windowHeight, preferredHeight);
 		var initHeight = minHeight;
