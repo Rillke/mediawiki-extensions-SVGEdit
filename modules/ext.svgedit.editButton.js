@@ -33,31 +33,42 @@ $(document).ready(function() {
 			});
 		};
 
-		var tab = mw.util.addPortletLink('p-cactions',
-			document.location + '#!action=svgedit',
-			mw.msg('svgedit-edit-tab'),
-			'ca-ext-svgedit',
-			mw.msg('svgedit-edit-tab-tooltip'),
-			'',
-			document.getElementById('ca-edit'));
+		var $tab = $( mw.util.addPortletLink(
+				'p-cactions',
+				document.location + '#!action=svgedit',
+				mw.msg('svgedit-edit-tab'),
+				'ca-ext-svgedit',
+				mw.msg('svgedit-edit-tab-tooltip'),
+				'',
+				document.getElementById('ca-edit'))
+			);
 
-		$(tab).find('a').click(function(event) {
+		$tab.find('a').click(function(event) {
 			trigger();
 			event.preventDefault();
 			return false;
 		});
 
-		var button = $('<button></button>')
+		var $button = $('<button>')
 			.text(mw.msg('svgedit-editbutton-edit'))
 			.click(function() {
 				trigger();
 			});
-		$('.fullMedia').append(button);
+		$('.fullMedia').append($button);
 
 		if (window.location.hash.indexOf('!action=svgedit') !== -1) {
 			window.location.hash = '';
 			trigger();
 		}
+		
+		$(mw.svgedit).on({
+			open: function() {
+				$tab.add($button).attr('disabled', 'disabled').addClass('ui-state-disabled');
+			},
+			close: function() {
+				$tab.add($button).removeAttr('disabled', 'disabled').removeClass('ui-state-disabled');
+			}
+		});
 	}
 });
 

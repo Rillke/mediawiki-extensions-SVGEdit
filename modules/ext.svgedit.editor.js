@@ -27,6 +27,7 @@ mw.svgedit = {
 			return false;
 		}
 		mw.svgedit.isOpen = true;
+		$(mw.svgedit).trigger('open');
 
 		if ('filename' in options) {
 			// Get some basic info on the image before we go barrelling in...
@@ -106,6 +107,7 @@ mw.svgedit = {
 				spinner.remove();
 				orig.show();
 				mw.svgedit.isOpen = false;
+				$(mw.svgedit).trigger('close');
 			}
 			if (onclose) {
 				onclose(saved ? filename : null);
