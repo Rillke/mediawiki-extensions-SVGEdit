@@ -168,7 +168,7 @@ mw.svgedit = {
 		spinnerOn();
 		$('#mw-svgedit-frame')
 			.load(function() {
-				svgedit = new embedded_svg_edit(this, ['http://mol.wmflabs.org', 'https://mol.wmflabs.org', 'http://mol-static.wmflabs.org', 'https://mol-static.wmflabs.org']);
+				svgedit = new embedded_svg_edit(this, ['http://mol.wmflabs.org', 'https://mol.wmflabs.org', 'http://mol-static.wmflabs.org', 'https://mol-static.wmflabs.org', 'http://commons.wikimedia.org', 'https://commons.wikimedia.org']);
 
 				// Load up the original file!
 				if (filename && imageinfo && imageinfo.url) {
