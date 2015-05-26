@@ -99,7 +99,7 @@ function getMessageListener (t) {
 */
 function EmbeddedSVGEdit (frame, allowedOrigins) {
   if (!(this instanceof EmbeddedSVGEdit)) { // Allow invocation without 'new' keyword
-	return new EmbeddedSVGEdit(frame);
+	return new EmbeddedSVGEdit(frame, allowedOrigins);
   }
   this.allowedOrigins = allowedOrigins || [];
   // Initialize communication
