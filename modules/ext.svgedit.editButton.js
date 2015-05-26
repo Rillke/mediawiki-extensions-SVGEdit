@@ -15,13 +15,13 @@ $(document).ready(function() {
 		return;
 	}
 
-	if (wgCanonicalNamespace === 'File' &&
-		wgAction === 'view' &&
-		wgTitle.match(/\.svg$/i)) {
+	if (mw.config.get('wgCanonicalNamespace') === 'File' &&
+		mw.config.get('wgAction') === 'view' &&
+		mw.config.get('wgTitle').match(/\.svg$/i)) {
 
 		var trigger = function() {
 			mw.svgedit.open({
-				filename: wgTitle,
+				filename: mw.config.get('wgTitle'),
 				replace: '#file',
 				onclose: function(filename) {
 					if (filename) {
